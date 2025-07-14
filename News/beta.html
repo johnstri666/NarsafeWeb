@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jurnal Refleksi Diri | NARSAFE</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      :root {
+        --primary-dark: #0a0a0a;
+        --primary-light: #1a1a1a;
+        --accent-gold: #d4af37;
+        --accent-gold-light: #f0e6c5;
+        --accent-teal: #2dd4bf;
+        --neutral-warm: #121212;
+        --neutral-cool: #1e1e1e;
+        --text-primary: #f5f5f5;
+        --text-secondary: #b0b0b0;
+        --shadow-soft: 0 4px 20px -5px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        --transition-base: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        --border-radius: 16px;
+        --glass-effect: rgba(26, 26, 26, 0.7);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--neutral-warm) 0%,
+          var(--primary-dark) 100%
+        );
+        color: var(--text-primary);
+        min-height: 100vh;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        padding: 0 20px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        color: var(--accent-gold-light);
+        text-align: center;
+        margin-bottom: 2.5rem;
+        position: relative;
+        letter-spacing: 0.5px;
+      }
+
+      h1::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-gold), transparent);
+        border-radius: 2px;
+      }
+
+      /* Header Styles */
+      .main-header {
+        padding: 20px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        transition: var(--transition-base);
+      }
+
+      .main-header.scrolled {
+        padding: 15px 0;
+        background: rgba(10, 10, 10, 0.95);
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--accent-gold-light);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+        color: var(--accent-gold);
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        font-weight: 500;
+        margin: 0 15px;
+        position: relative;
+        transition: var(--transition-base);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--accent-gold-light);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-gold);
+        transition: var(--transition-base);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 0 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: var(--accent-gold);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 500;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+      }
+
+      /* Quote Section */
+      .quote-section {
+        background: var(--glass-effect);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        border-radius: var(--border-radius);
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow-soft);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition-base);
+      }
+
+      .quote-section:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+
+      .quote-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+      }
+
+      .quote-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: var(--transition-base);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        margin: 1rem 0;
+        cursor: pointer;
+      }
+
+      .quote-image:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        border-color: rgba(212, 175, 55, 0.4);
+      }
+
+      .quote-date {
+        font-size: 0.95rem;
+        color: var(--accent-gold);
+        margin-top: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* Reflection Section */
+      .reflection-section {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      .btn-reflect {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 14px 36px;
+        background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+        color: var(--primary-dark);
+        border: none;
+        border-radius: 50px;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition-base);
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+      }
+
+      .btn-reflect:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+        background: linear-gradient(135deg, #f0e6c5, var(--accent-gold));
+        color: var(--primary-dark);
+      }
+
+      .btn-reflect:active {
+        transform: translateY(0);
+      }
+
+      .card-reflection {
+        background: var(--glass-effect);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-soft);
+        margin-top: 2rem;
+        overflow: hidden;
+        transition: var(--transition-base);
+        opacity: 0;
+        transform: translateY(20px);
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .card-reflection.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .card-reflection:hover {
+        transform: translateY(-5px) scale(1.01);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+
+      .card-body {
+        padding: 2rem;
+        position: relative;
+      }
+
+      .card-title {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: var(--accent-gold-light);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .card-title::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        background: var(--accent-gold);
+        border-radius: 1px;
+      }
+
+      .card-text {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        line-height: 1.8;
+        text-align: center;
+        font-weight: 400;
+        padding: 1rem 0;
+      }
+
+      .decorative-element {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          var(--accent-gold) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .decorative-element.top-left {
+        top: -50px;
+        left: -50px;
+      }
+
+      .decorative-element.bottom-right {
+        bottom: -50px;
+        right: -50px;
+      }
+
+      /* Image Modal Styles */
+      .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        overflow: auto;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 90%;
+        max-height: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 3px solid var(--accent-gold);
+        border-radius: var(--border-radius);
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        transition: var(--transition-base);
+      }
+
+      .modal-content:hover {
+        box-shadow: 0 0 40px rgba(212, 175, 55, 0.7);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: var(--accent-gold);
+        font-size: 40px;
+        font-weight: bold;
+        transition: var(--transition-base);
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .close-modal:hover {
+        color: var(--accent-gold-light);
+        transform: scale(1.1);
+      }
+
+      .modal-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: var(--accent-gold-light);
+        padding: 10px;
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      /* News Section Styles */
+      .news-section {
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--accent-gold-light);
+        margin-bottom: 15px;
+      }
+
+      .section-title p {
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .news-card {
+        background: var(--glass-effect);
+        backdrop-filter: blur(16px);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition-base);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+      }
+
+      .news-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+
+      .news-image-container {
+        position: relative;
+        overflow: hidden;
+        height: 250px;
+      }
+
+      .news-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .news-card:hover .news-image {
+        transform: scale(1.05);
+      }
+
+      .news-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(212, 175, 55, 0.9);
+        color: var(--primary-dark);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .news-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .news-title {
+        font-family: "Playfair Display", serif;
+        color: var(--accent-gold-light);
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        transition: var(--transition-base);
+      }
+
+      .news-card:hover .news-title {
+        color: var(--accent-teal);
+      }
+
+      .news-excerpt {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        flex-grow: 1;
+      }
+
+      .news-link {
+        color: var(--accent-gold);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        transition: var(--transition-base);
+      }
+
+      .news-link:hover {
+        color: var(--accent-gold-light);
+        transform: translateX(5px);
+      }
+
+      .btn-view-all {
+        background: transparent;
+        color: var(--accent-gold);
+        border: 1px solid var(--accent-gold);
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: var(--transition-base);
+        margin-top: 40px;
+      }
+
+      .btn-view-all:hover {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--accent-gold-light);
+        border-color: var(--accent-gold-light);
+        transform: translateY(-3px);
+      }
+
+      /* Features Section */
+      .features-section {
+        padding: 100px 0;
+        background: rgba(10, 10, 10, 0.5);
+      }
+
+      .feature-card {
+        background: var(--glass-effect);
+        backdrop-filter: blur(16px);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        height: 100%;
+        transition: var(--transition-base);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        text-align: center;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--accent-gold);
+        margin-bottom: 20px;
+        transition: var(--transition-base);
+      }
+
+      .feature-card:hover .feature-icon {
+        color: var(--accent-teal);
+        transform: scale(1.1);
+      }
+
+      .feature-title {
+        font-family: "Playfair Display", serif;
+        color: var(--accent-gold-light);
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+
+      .feature-text {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      /* Footer Styles */
+      footer {
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        background-color: var(--primary-dark);
+        color: var(--text-primary);
+        padding: 80px 0 30px;
+        position: relative;
+      }
+
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--accent-gold-light);
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      .footer-about {
+        margin-bottom: 30px;
+      }
+
+      .footer-about p {
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        margin-bottom: 25px;
+        font-weight: 600;
+        color: var(--accent-gold-light);
+        font-family: "Playfair Display", serif;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-links h5::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--accent-gold);
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: var(--transition-base);
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-gold);
+        transform: translateX(5px);
+      }
+
+      .social-links {
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--accent-gold);
+        border-radius: 50%;
+        margin-right: 10px;
+        transition: var(--transition-base);
+      }
+
+      .social-links a:hover {
+        background: var(--accent-gold);
+        color: var(--primary-dark);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        color: var(--text-secondary);
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      /* Floating Elements */
+      .floating-element {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          var(--accent-gold) 0%,
+          transparent 70%
+        );
+        opacity: 0.1;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease-in-out forwards;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-in-up {
+        animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) translateX(0);
+        }
+        50% {
+          transform: translateY(-20vh) translateX(10vw);
+        }
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .news-image-container {
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+          margin-bottom: 2rem;
+        }
+
+        .quote-section {
+          padding: 1.5rem;
+          margin: 0 0 2rem 0;
+        }
+
+        .quote-image {
+          max-width: 250px;
+        }
+
+        .btn-reflect {
+          font-size: 1rem;
+          padding: 12px 28px;
+        }
+
+        .card-body {
+          padding: 1.5rem;
+        }
+
+        .card-text {
+          font-size: 1rem;
+        }
+
+        .reflection-section {
+          padding: 0;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .news-section {
+          padding: 60px 0;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 100px 0 60px;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .hero-description {
+          font-size: 1rem;
+        }
+
+        .news-section {
+          padding: 50px 0;
+        }
+
+        .news-card {
+          margin-bottom: 30px;
+        }
+
+        .feature-card {
+          margin-bottom: 30px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .quote-section {
+          padding: 1.25rem;
+        }
+
+        .quote-image {
+          max-width: 200px;
+        }
+
+        .card-body {
+          padding: 1.25rem;
+        }
+
+        .modal-content {
+          max-width: 95%;
+          max-height: 80%;
+        }
+
+        .close-modal {
+          top: 10px;
+          right: 20px;
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Background Elements -->
+    <div
+      class="floating-element"
+      style="width: 300px; height: 300px; top: 10%; left: 5%"
+    ></div>
+    <div
+      class="floating-element"
+      style="width: 200px; height: 200px; bottom: 15%; right: 8%"
+    ></div>
+    <div
+      class="floating-element"
+      style="width: 150px; height: 150px; top: 30%; right: 20%"
+    ></div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand logo" href="#">
+            <i class="fas fa-book-open"></i> NARSAFE
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <i class="fas fa-bars" style="color: var(--accent-gold)"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#features">Fitur</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#journal">Jurnal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#news">Berita</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">Tentang</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="animate__animated animate__fadeInDown">
+              Jurnal Refleksi Diri
+            </h1>
+            <p
+              class="hero-subtitle animate__animated animate__fadeInDown animate__delay-1s"
+            >
+              Temukan Diri yang Lebih Baik
+            </p>
+            <p
+              class="hero-description animate__animated animate__fadeIn animate__delay-2s"
+            >
+              Mulai perjalanan refleksi harian Anda dengan kutipan inspiratif
+              dan pertanyaan mendalam yang membantu Anda memahami diri sendiri
+              lebih baik.
+            </p>
+            <a
+              href="#journal"
+              class="btn btn-reflect animate__animated animate__fadeInUp animate__delay-3s"
+            >
+              Mulai Refleksi <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
+          <div
+            class="col-lg-6 d-none d-lg-block animate__animated animate__fadeInRight animate__delay-1s"
+          >
+            <img
+              src="https://source.unsplash.com/random/600x600/?journal"
+              alt="Journal"
+              class="img-fluid rounded-3 shadow-lg"
+              style="border: 2px solid var(--accent-gold)"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Fitur Unggulan</h2>
+          <p>
+            Nikmati pengalaman refleksi diri yang lebih bermakna dengan
+            fitur-fitur khusus kami
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+              <h3 class="feature-title">Kutipan Harian</h3>
+              <p class="feature-text">
+                Dapatkan kutipan inspiratif setiap hari untuk memulai hari
+                dengan pikiran positif dan motivasi.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-question-circle"></i>
+              </div>
+              <h3 class="feature-title">Pertanyaan Refleksi</h3>
+              <p class="feature-text">
+                Temukan pertanyaan mendalam yang membantu Anda memahami diri
+                sendiri lebih baik.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-newspaper"></i>
+              </div>
+              <h3 class="feature-title">Berita Terkini</h3>
+              <p class="feature-text">
+                Akses artikel terbaru tentang kesehatan mental dan pengembangan
+                diri.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journal Section -->
+    <section class="container py-5" id="journal">
+      <h1 class="animate__animated animate__fadeInDown">
+        Jurnal Refleksi Diri
+      </h1>
+
+      <!-- Kutipan Harian dalam Bentuk Gambar -->
+      <div class="quote-section slide-in-up">
+        <div class="decorative-element top-left"></div>
+        <div class="decorative-element bottom-right"></div>
+        <img
+          id="quote-image"
+          class="quote-image"
+          src=""
+          alt="Kutipan Harian"
+          loading="lazy"
+          onclick="openImageModal(this)"
+        />
+        <div class="quote-date" id="quote-date"></div>
+      </div>
+
+      <!-- Image Modal -->
+      <div id="imageModal" class="image-modal">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage" />
+        <div class="modal-caption" id="modalCaption"></div>
+      </div>
+
+      <!-- Kartu Refleksi -->
+      <div class="reflection-section slide-in-up" style="animation-delay: 0.2s">
+        <button class="btn btn-reflect" onclick="showReflection()">
+          Ambil Kartu Refleksi Hari Ini
+        </button>
+        <div class="card card-reflection" id="reflection-card">
+          <div class="card-body">
+            <h5 class="card-title">Pertanyaan Refleksi</h5>
+            <p class="card-text" id="reflection-text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+      <div class="container">
+        <div class="section-title">
+          <h2>Berita Terkini</h2>
+          <p>Update terbaru tentang kesehatan mental dan pengembangan diri</p>
+        </div>
+
+        <div class="row">
+          <!-- News Card 1 -->
+          <div class="col-md-4 mb-4">
+            <div class="news-card">
+              <div class="news-image-container">
+                <img
+                  src="https://source.unsplash.com/random/600x400/?mental-health"
+                  class="news-image"
+                  alt="News 1"
+                />
+                <div class="news-date">15 Juli 2025</div>
+              </div>
+              <div class="news-content">
+                <h3 class="news-title">Workshop Kesehatan Mental Remaja</h3>
+                <p class="news-excerpt">
+                  Pelajari teknik dasar menjaga kesehatan mental di era digital
+                  bersama para ahli.
+                </p>
+                <a href="#" class="news-link"
+                  >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- News Card 2 -->
+          <div class="col-md-4 mb-4">
+            <div class="news-card">
+              <div class="news-image-container">
+                <img
+                  src="https://source.unsplash.com/random/600x400/?meditation"
+                  class="news-image"
+                  alt="News 2"
+                />
+                <div class="news-date">10 Juli 2025</div>
+              </div>
+              <div class="news-content">
+                <h3 class="news-title">Teknik Meditasi untuk Pemula</h3>
+                <p class="news-excerpt">
+                  Temukan manfaat meditasi 5 menit sehari untuk mengurangi stres
+                  dan kecemasan.
+                </p>
+                <a href="#" class="news-link"
+                  >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- News Card 3 -->
+          <div class="col-md-4 mb-4">
+            <div class="news-card">
+              <div class="news-image-container">
+                <img
+                  src="https://source.unsplash.com/random/600x400/?journal"
+                  class="news-image"
+                  alt="News 3"
+                />
+                <div class="news-date">5 Juli 2025</div>
+              </div>
+              <div class="news-content">
+                <h3 class="news-title">
+                  Manfaat Journaling untuk Kesehatan Mental
+                </h3>
+                <p class="news-excerpt">
+                  Bagaimana menulis jurnal dapat membantu proses refleksi dan
+                  penyembuhan diri.
+                </p>
+                <a href="#" class="news-link"
+                  >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="#" class="btn btn-view-all"
+            >Lihat Semua Berita <i class="fas fa-arrow-right ms-2"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="features-section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang NARSAFE</h2>
+          <p>Platform refleksi diri untuk kesehatan mental yang lebih baik</p>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4">
+            <img
+              src="https://source.unsplash.com/random/600x400/?team"
+              alt="About Us"
+              class="img-fluid rounded-3 shadow-lg"
+            />
+          </div>
+          <div class="col-lg-6 mb-4">
+            <h3 style="color: var(--accent-gold-light); margin-bottom: 20px">
+              Misi Kami
+            </h3>
+            <p style="color: var(--text-secondary); margin-bottom: 20px">
+              NARSAFE hadir untuk memberikan alat dan sumber daya yang membantu
+              individu dalam proses refleksi diri dan pengembangan pribadi. Kami
+              percaya bahwa kesadaran diri adalah langkah pertama menuju
+              kesehatan mental yang lebih baik.
+            </p>
+            <h3 style="color: var(--accent-gold-light); margin-bottom: 20px">
+              Tim Kami
+            </h3>
+            <p style="color: var(--text-secondary)">
+              <strong>Silvia Manao</strong> dan <strong>Maya Saira</strong> dari
+              Club Karya Ilmiah Remaja SMAS Sultan Iskandar Muda Medan, Sumatera
+              Utara, Indonesia, menciptakan platform ini sebagai bagian dari
+              komitmen mereka terhadap kesehatan mental remaja.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a href="#" class="footer-logo">
+              <i class="fas fa-book-open me-2"></i>NARSAFE
+            </a>
+            <div class="footer-about">
+              <p>
+                Platform refleksi diri untuk kesehatan mental yang lebih baik.
+                Dibuat oleh Silvia Manao dan Maya Saira dari Club Karya Ilmiah
+                Remaja SMAS Sultan Iskandar Muda.
+              </p>
+              <div class="social-links">
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" aria-label="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" aria-label="Youtube"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0 footer-links">
+            <h5>Navigasi</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#features">Fitur</a></li>
+              <li><a href="#journal">Jurnal</a></li>
+              <li><a href="#news">Berita</a></li>
+              <li><a href="#about">Tentang</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 footer-links">
+            <h5>Dukungan</h5>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Kebijakan Privasi</a></li>
+              <li><a href="#">Syarat & Ketentuan</a></li>
+              <li><a href="#">Kontak Kami</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h5>Informasi</h5>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt me-2"></i> SMAS Sultan Iskandar
+                Muda, Medan
+              </li>
+              <li><i class="fas fa-envelope me-2"></i> info@narsafe.id</li>
+              <li><i class="fas fa-phone me-2"></i> +62 123 4567 890</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 NARSAFE. All rights reserved.</p>
+          <p class="mt-2">
+            NARSAFE bukan merupakan layanan psikolog profesional. Jika Anda
+            membutuhkan bantuan profesional, silakan hubungi ahli kesehatan
+            mental.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Header scroll effect
+      const header = document.querySelector(".main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Gambar kutipan harian berdasarkan hari
+      const quoteImages = [
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,1",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,2",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,3",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,4",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,5",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,6",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,7",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,8",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,9",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,10",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,11",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,12",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,13",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,14",
+        "https://source.unsplash.com/random/600x600/?inspiration,quote,15",
+      ];
+
+      const today = new Date();
+      const quoteIndex = today.getDate() % quoteImages.length;
+      const currentQuoteImage = quoteImages[quoteIndex];
+      document.getElementById("quote-image").src = currentQuoteImage;
+      document.getElementById("quote-image").alt =
+        "Kutipan inspiratif hari ini";
+
+      document.getElementById(
+        "quote-date"
+      ).textContent = `Hari ini: ${today.toLocaleDateString("id-ID", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}`;
+
+      // Image Modal Functionality
+      function openImageModal(imgElement) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const captionText = document.getElementById("modalCaption");
+
+        modal.style.display = "block";
+        modalImg.src = imgElement.src;
+        captionText.innerHTML = imgElement.alt;
+
+        // Prevent scrolling when modal is open
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeImageModal() {
+        const modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+
+        // Re-enable scrolling
+        document.body.style.overflow = "auto";
+      }
+
+      // Close modal when clicking outside the image
+      window.onclick = function (event) {
+        const modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+          closeImageModal();
+        }
+      };
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        const modal = document.getElementById("imageModal");
+        if (event.key === "Escape" && modal.style.display === "block") {
+          closeImageModal();
+        }
+      });
+
+      // Kartu refleksi yang lebih beragam
+      const reflections = [
+        "Apa satu pencapaian kecil hari ini yang membuatmu bangga?",
+        "Siapa orang yang paling berpengaruh dalam harimu hari ini dan mengapa?",
+        "Bagaimana kamu menunjukkan kebaikan kepada dirimu sendiri hari ini?",
+        "Apa pelajaran berharga yang kamu dapatkan dari kesalahan terakhirmu?",
+        "Jika hari ini adalah sebuah bab dalam bukumu, apa judul yang akan kamu berikan?",
+        "Apa yang kamu pelajari tentang dirimu sendiri minggu ini?",
+        "Bagaimana kamu tumbuh sebagai pribadi dibandingkan bulan lalu?",
+        "Apa yang bisa kamu lakukan besok untuk membuat harimu lebih bermakna?",
+        "Apa tiga hal kecil yang kamu syukuri hari ini?",
+        "Kapan terakhir kali kamu keluar dari zona nyaman dan apa yang kamu pelajari?",
+        "Apa nilai hidup yang paling kamu junjung tinggi saat ini?",
+        "Bagaimana kamu bisa lebih baik dalam mendengarkan orang lain?",
+        "Apa yang ingin kamu ingat tentang dirimu saat ini di masa depan?",
+        "Bagaimana kamu mendefinisikan kesuksesan untuk dirimu sendiri?",
+        "Apa yang membuatmu merasa paling hidup belakangan ini?",
+      ];
+
+      function showReflection() {
+        const index = Math.floor(Math.random() * reflections.length);
+        const reflectionCard = document.getElementById("reflection-card");
+        const reflectionText = document.getElementById("reflection-text");
+        const button = document.querySelector(".btn-reflect");
+
+        // Update button text
+        button.innerHTML =
+          '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Memuat...';
+        button.disabled = true;
+
+        // Simulate loading delay
+        setTimeout(() => {
+          reflectionText.textContent = reflections[index];
+          reflectionCard.classList.add("show");
+          button.innerHTML =
+            'Ambil Kartu Baru <i class="fas fa-sync-alt ms-2"></i>';
+          button.disabled = false;
+
+          // Smooth scroll to card
+          reflectionCard.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }, 800);
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Initialize tooltips
+      const tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      // Add floating animation to elements
+      function addFloatingAnimation() {
+        const elements = document.querySelectorAll(".floating-element");
+        elements.forEach((el, index) => {
+          const duration = Math.random() * 20 + 10;
+          const delay = Math.random() * 5;
+          el.style.animation = `float ${duration}s infinite ease-in-out ${delay}s`;
+        });
+      }
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        addFloatingAnimation();
+
+        // Add animation to elements when they come into view
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(
+                  "animate__animated",
+                  "animate__fadeInUp"
+                );
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document
+          .querySelectorAll(".feature-card, .news-card")
+          .forEach((card) => {
+            observer.observe(card);
+          });
+      });
+    </script>
+  </body>
+</html>
