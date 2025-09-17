@@ -658,6 +658,107 @@
         }
       }
 
+      .features {
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem;
+        background: black;
+      }
+
+      .features h1 {
+        font-size: 1.7rem;
+        color: var(--thirdcolor);
+        margin-bottom: 0.5rem;
+      }
+
+      .features > p {
+        color: #ccc;
+        margin-bottom: 3rem;
+      }
+
+      .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        position: relative;
+        text-align: center;
+        padding: 3rem 2rem;
+        border-radius: 1px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        background: linear-gradient(
+          110deg,
+          #000000 0%,
+          #09407c 50%,
+          #15d0e8 100%
+        );
+        background-size: cover;
+        background-position: center;
+        color: white;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgb(0, 0, 0) 0%,
+          rgba(1, 40, 65, 0.6) 50%,
+          rgba(2, 98, 146, 0.6) 100%
+        );
+        z-index: 1;
+      }
+
+      .feature-card h3,
+      .feature-card p,
+      .feature-card .btnfeature {
+        position: relative;
+        z-index: 1;
+      }
+
+      .feature-card h3 {
+        font-weight: 500;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .btnfeature {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.5rem 1.5rem;
+        background: transparent;
+        border: 2px solid white;
+        font-weight: 300;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        border-radius: 1px;
+        transition: background 0.3s ease;
+        pointer-events: auto;
+      }
+
+      .btnfeature:hover {
+        background: white;
+        color: black;
+        border: 2px solid var(--primary);
+      }
+      /* About Section */
+      .about {
+        padding: 6rem 2rem;
+        background: var(--bg-primary);
+      }
+
+      .feature-card:hover {
+        border-bottom: 5px solid white;
+        transform: translateY(-3px);
+      }
+
       /* Loading animation */
       .loader {
         display: flex;
@@ -938,6 +1039,256 @@
         color: white;
         border: 1px solid var(--thirdcolor);
       }
+
+      .quotex {
+        z-index: 8;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column; /* elemen ditumpuk vertikal */
+        justify-content: center; /* center vertical */
+        align-items: center; /* center horizontal */
+      }
+
+      .quotex h2 {
+        font-weight: 300;
+        max-width: 1000px;
+        padding: 5px 30px;
+        font-size: 2.2rem;
+        text-align: center;
+        color: white;
+      }
+
+      .quotex h3 {
+        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #f1f1f1;
+        text-align: center;
+      }
+
+      .faq {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; /* lebih longgar supaya enak dibaca */
+        margin: 2rem auto 3rem; /* auto biar center di layar */
+        width: 100%;
+        max-width: 900px;
+        padding: 0 1rem; /* padding kiri kanan biar tidak mentok layar */
+        box-sizing: border-box; /* pastikan padding tidak merusak layout */
+      }
+
+      .faq h1 {
+        margin-top: 2rem;
+        font-weight: 300;
+        justify-content: center;
+        text-align: center;
+        color: var(--thirdcolor);
+      }
+
+      .faq-item {
+        background-color: #000000;
+        border-radius: 2px;
+        border: 1px solid #252525;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 1rem 1.2rem;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .faq-item:hover {
+        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 300;
+        font-size: 1.2rem;
+        color: var(--thirdcolor);
+      }
+
+      .faq-icon {
+        font-size: 2.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(135deg);
+      }
+
+      .faq-answer {
+        color: #ffffff;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-top: 0.5rem;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .faq-item.active .faq-answer {
+        opacity: 1;
+        max-height: 500px;
+      }
+
+      .cards-container {
+        text-align: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .cards-container h1 {
+        text-align: center;
+        margin-top: 2rem;
+        font-weight: 300;
+        color: var(--thirdcolor);
+      }
+
+      .cards-container p {
+        color: #ccc;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 3rem;
+      }
+
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .cardxx {
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        flex: 0 0 300px;
+        height: 450px;
+        margin-right: 20px;
+        border-radius: 1px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        background-color: white;
+      }
+
+      .cardxx:hover {
+        transform: translateY(-3px);
+      }
+
+      .cardxx img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-controls {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .carousel-btn {
+        background-color: var(--thirdcolor);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-btn:hover {
+        background-color: white;
+        color: black;
+      }
+
+      /* Tampilan Fokus Gambar */
+      .focus-view {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        animation: fadeIn 0.3s ease;
+        cursor: pointer;
+      }
+
+      .focus-content {
+        position: relative;
+        margin: 5% auto;
+        max-width: 80%;
+        animation: slideIn 0.3s ease;
+      }
+
+      .focus-content img {
+        width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .close-focus {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          flex: 0 0 250px;
+          height: 200px;
+        }
+
+        .focus-content {
+          max-width: 95%;
+          margin: 10% auto;
+        }
+      }
     </style>
   </head>
   <body>
@@ -976,7 +1327,7 @@
               <a class="nav-link" href="#features">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#news">Modules</a>
+              <a class="nav-link" href="#news">Blog</a>
             </li>
           </ul>
           <div class="d-flex align-items-center ms-3"></div>
@@ -1185,199 +1536,89 @@
     </section>
 
     <!-- Features Section -->
-    <section class="sectionx" id="features">
-      <div class="container">
-        <h2 class="section-title text-center mb-5">Features</h2>
-        <div class="row">
-          <!-- Baris Pertama: 3 kartu -->
-          <div class="col-md-4 mb-4 fade-in">
-            <div class="card feature-card h-100">
-              <div class="card-body text-center">
-                <div class="feature-icon mx-auto">
-                  <i class="fas fa-brain"></i>
-                </div>
-                <h4 class="card-title">Insight Module</h4>
-                <p class="card-text">
-                  Akses informasi berbasis bukti tentang narsisme, citra diri,
-                  dan kesehatan emosional yang dikemukakan oleh para ahli.
-                </p>
-                <button
-                  class="btn btn-sm btn-outline-primary"
-                  onclick="location.href='#news'"
-                >
-                  Jelajahi
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4 fade-in delay-100">
-            <div class="card feature-card h-100">
-              <div class="card-body text-center">
-                <div class="feature-icon mx-auto">
-                  <i class="fas fa-comment-dots"></i>
-                </div>
-                <h4 class="card-title">Self-Reflection Journal</h4>
-                <p class="card-text">
-                  Fitur ini bertujuan mendorong refleksi diri harian guna
-                  mengurangi manifestasi star syndrome dan kecenderungan
-                  narsistik.
-                </p>
-                <button
-                  class="btn btn-sm btn-outline-primary"
-                  onclick="location.href='Journal/index.html'"
-                >
-                  Jelajahi
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4 fade-in delay-200">
-            <div class="card feature-card h-100">
-              <div class="card-body text-left">
-                <div class="feature-icon mx-auto">
-                  <i class="fas fa-list"></i>
-                </div>
-                <h4 class="card-title">
-                  Self Check-In: Tes Tendensi Narsistik
-                </h4>
-                <p class="card-text">
-                  Tes ini membantumu mengenali sejauh mana kecenderungan
-                  narsistik dalam diri. Jawablah dengan jujur, karena ini ruang
-                  refleksi, bukan penilaian.
-                </p>
-                <button
-                  class="btn btn-sm btn-outline-primary"
-                  onclick="location.href='selfreflection/index.html'"
-                >
-                  Jelajahi
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Baris Kedua: 2 kartu lainnya -->
-          <div class="col-md-4 mb-4 fade-in">
-            <div class="card feature-card h-100">
-              <div class="card-body text-center">
-                <div class="feature-icon mx-auto">
-                  <i class="fas fa-stairs"></i>
-                </div>
-                <h4 class="card-title">Langkah Sadar Diri</h4>
-                <p class="card-text">
-                  Latih kesadaran diri dan kerendahan hati setiap hari lewat
-                  kebiasaan kecil yang berdampak besar. Kenali dirimu, rawat
-                  relasi, dan tumbuhkan pola pikir sehat.
-                </p>
-                <button
-                  class="btn btn-sm btn-outline-primary"
-                  onclick="location.href='SelfStep/index.html'"
-                >
-                  Jelajahi
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4 fade-in delay-100">
-            <div class="card feature-card h-100">
-              <div class="card-body text-center">
-                <div class="feature-icon mx-auto">
-                  <i class="fas fa-mountain"></i>
-                </div>
-                <h4 class="card-title">Weekly Emphaty Challenge</h4>
-                <p class="card-text">
-                  Tantangan ini mengajakmu melatih empati dan koneksi emosional
-                  lewat satu aksi kecil setiap hari, yang berdampak bagi orang
-                  lain dan bermakna untuk dirimu sendiri.
-                </p>
-                <button
-                  class="btn btn-sm btn-outline-primary"
-                  onclick="location.href='weekly/index.html'"
-                >
-                  Jelajahi
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4 fade-in delay-200">
-            <div class="card feature-card h-100">
-              <div class="card-body text-center">
-                <div class="feature-icon mx-auto">
-                  <i class="fas fa-book"></i>
-                </div>
-                <h4 class="card-title">Letter to Yourself</h4>
-                <p class="card-text">
-                  Menulis untuk diri sendiri adalah langkah bermakna untuk
-                  memahami dirimu lebih dalam. Ini bisa menjadi pelukan hangat
-                  saat cemas, semangat baru saat berat, atau pengingat lembut
-                  bahwa kamu layak tumbuh dan bahagia.
-                </p>
-                <button
-                  class="btn btn-sm btn-outline-primary"
-                  onclick="location.href='Letter/index.html'"
-                >
-                  Jelajahi
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="features">
+      <h1>Features</h1>
+      <p>Temukan Berbagai Fitur yang Membantumu Dalam Mengeksplor Dirimu</p>
 
-    <!--  <section class="section" id="testimonials">
-      <div class="container">
-        <h2 class="section-title text-center mb-5">What People Say</h2>
-        <div class="row">
-          <div class="col-lg-4 mb-4 fade-in">
-            <div class="testimonial h-100">
-              <p class="testimonial-text">
-                "NARSAFE has helped me understand my own behaviors and thought
-                patterns. The daily reflection practice has been transformative
-                for my personal growth."
-              </p>
-              <div class="testimonial-author">
-                <img src="Image/narsmain.png" alt="Testimonial Author" />
-                <div class="testimonial-author-info">
-                  <h5>Sarah Johnson</h5>
-                  <small>Psychology Student</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4 fade-in delay-100">
-            <div class="testimonial h-100">
-              <p class="testimonial-text">
-                "As a therapist, I recommend NARSAFE to many of my clients. The
-                resources are well-researched and the reflection tools provide
-                valuable structure for self-examination."
-              </p>
-              <div class="testimonial-author">
-                <img src="/api/placeholder/50/50" alt="Testimonial Author" />
-                <div class="testimonial-author-info">
-                  <h5>Dr. Michael Chen</h5>
-                  <small>Clinical Psychologist</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4 fade-in delay-200">
-            <div class="testimonial h-100">
-              <p class="testimonial-text">
-                "The community aspect of NARSAFE has been incredibly supportive.
-                Sharing experiences with others on similar journeys has made me
-                feel less alone in my struggles."
-              </p>
-              <div class="testimonial-author">
-                <img src="/api/placeholder/50/50" alt="Testimonial Author" />
-                <div class="testimonial-author-info">
-                  <h5>Amanda Torres</h5>
-                  <small>Community Member</small>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="features-container">
+        <div
+          class="feature-card"
+          style="background-image: url('Image/modul.jpg')"
+        >
+          <h3>Insight Module</h3>
+          <p>
+            Akses berbagai informasi tentang narsisme, citra diri, dan kesehatan
+            emosional yang dikemukakan oleh para ahli.
+          </p>
+          <a href="/" class="btnfeature">Jelajahi</a>
+        </div>
+
+        <div
+          class="feature-card"
+          style="background-image: url('Image/two.jpg')"
+        >
+          <h3>Self-Reflection Journal</h3>
+          <p>
+            Fitur ini bertujuan mendorong refleksi diri harian guna mengurangi
+            manifestasi star syndrome dan kecenderungan narsistik.
+          </p>
+          <a href="Journal/index.html" class="btnfeature">Jelajahi</a>
+        </div>
+
+        <div
+          class="feature-card"
+          style="background-image: url('Image/three.jpg')"
+        >
+          <h3>Self Check-In</h3>
+          <p>
+            Tes ini membantumu mengenali sejauh mana kecenderungan narsistik
+            dalam diri. Jawablah dengan jujur, karena ini ruang refleksi, bukan
+            penilaian.
+          </p>
+          <a href="selfreflection/index.html" class="btnfeature">Jelajahi</a>
+        </div>
+
+        <div
+          class="feature-card"
+          style="background-image: url('Image/four.jpg')"
+        >
+          <h3>Langkah Sadar Diri</h3>
+          <p>
+            Latih kesadaran diri dan kerendahan hati setiap hari lewat kebiasaan
+            kecil yang berdampak besar. Kenali dirimu, rawat relasi, dan
+            tumbuhkan pola pikir sehat.
+          </p>
+          <a href="SelfStep/index.html" class="btnfeature">Jelajahi</a>
+        </div>
+
+        <div
+          class="feature-card"
+          style="background-image: url('Image/fivex.jpg')"
+        >
+          <h3>Weekly Emphaty Challenge</h3>
+          <p>
+            Tantangan ini mengajakmu melatih empati dan koneksi emosional lewat
+            satu aksi kecil setiap hari, yang berdampak bagi orang lain dan
+            bermakna untuk dirimu sendiri.
+          </p>
+          <a href="weekly/index.html" class="btnfeature">Jelajahi</a>
+        </div>
+
+        <div
+          class="feature-card"
+          style="background-image: url('Image/six.jpg')"
+        >
+          <h3>Letter to Yourself</h3>
+          <p>
+            Menulis untuk diri sendiri adalah langkah bermakna untuk memahami
+            dirimu lebih dalam. Ini bisa menjadi pelukan hangat saat cemas,
+            semangat baru saat berat, atau pengingat lembut bahwa kamu layak
+            tumbuh dan bahagia.
+          </p>
+          <a href="Letter/index.html" class="btnfeature">Jelajahi</a>
         </div>
       </div>
-    </section> 
+    </div>
 
     <!-- News Section -->
     <section class="sectionnews" id="news">
@@ -1704,35 +1945,232 @@
       </div>
     </div>
 
-    <!-- CTA Section -->
-    <section class="section" id="cta">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <div class="cta-section text-center fade-in">
-              <h3 class="mb-4">Contact & Support</h3>
-              <p class="mb-4">
-                Connect with like-minded individuals on the journey of
-                self-discovery and personal growth.
-              </p>
-              <form class="row justify-content-center">
-                <div class="col-md-8">
-                  <div class="input-group mb-3">
-                    <input
-                      type="email"
-                      class="form-control form-control-lg"
-                      placeholder="Your email address"
-                      aria-label="Email Address"
-                    />
-                    <button class="btn btn-light" type="submit">Send</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+    <div class="cards-container">
+      <h1>Quote</h1>
+      <p>Temukan Inspirasi dan Refleksi Diri melalui Kartu Refleksi ini</p>
+
+      <div class="carousel-container">
+        <div class="carousel">
+          <!-- Kartu 1 -->
+          <div class="cardxx" onclick="showFocusImage('Card/one.jpg')">
+            <img src="Card/one.jpg" alt="Ucapan 1" />
+          </div>
+
+          <!-- Kartu 2 -->
+          <div class="cardxx" onclick="showFocusImage('Card/two.jpg')">
+            <img src="Card/two.jpg" alt="Ucapan 2" />
+          </div>
+
+          <!-- Kartu 3 -->
+          <div class="cardxx" onclick="showFocusImage('Card/three.jpg')">
+            <img src="Card/three.jpg" alt="Ucapan 3" />
+          </div>
+
+          <!-- Kartu 4 -->
+          <div class="cardxx" onclick="showFocusImage('Card/4.jpg')">
+            <img src="Card/4.jpg" alt="Ucapan 4" />
+          </div>
+
+          <!-- Kartu 5 -->
+          <div class="cardxx" onclick="showFocusImage('Card/5.jpg')">
+            <img src="Card/5.jpg" alt="Ucapan 5" />
+          </div>
+
+          <!-- Kartu 6 -->
+          <div class="cardxx" onclick="showFocusImage('Card/6.jpg')">
+            <img src="Card/6.jpg" alt="Ucapan 6" />
+          </div>
+
+          <!-- Kartu 7 -->
+          <div class="cardxx" onclick="showFocusImage('Card/7.jpg')">
+            <img src="Card/7.jpg" alt="Ucapan 7" />
+          </div>
+
+          <!-- Kartu 8 -->
+          <div class="cardxx" onclick="showFocusImage('Card/8.jpg')">
+            <img src="Card/8.jpg" alt="Ucapan 8" />
+          </div>
+
+          <!-- Kartu 8 -->
+          <div class="cardxx" onclick="showFocusImage('Card/8.jpg')">
+            <img src="Card/8.jpg" alt="Ucapan 8" />
+          </div>
+
+          <!-- Kartu 9 -->
+          <div class="cardxx" onclick="showFocusImage('Card/9.jpg')">
+            <img src="Card/9.jpg" alt="Ucapan 9" />
+          </div>
+
+          <!-- Kartu 10 -->
+          <div class="cardxx" onclick="showFocusImage('Card/10.jpg')">
+            <img src="Card/10.jpg" alt="Ucapan 10" />
+          </div>
+
+          <!-- Kartu 11 -->
+          <div class="cardxx" onclick="showFocusImage('Card/11.jpg')">
+            <img src="Card/11.jpg" alt="Ucapan 11" />
+          </div>
+          <!-- Kartu 12 -->
+          <div class="cardxx" onclick="showFocusImage('Card/12.jpg')">
+            <img src="Card/12.jpg" alt="Ucapan 12" />
+          </div>
+
+          <!-- Kartu 13 -->
+          <div class="cardxx" onclick="showFocusImage('Card/13.jpg')">
+            <img src="Card/13.jpg" alt="Ucapan 13" />
+          </div>
+
+          <!-- Kartu 14 -->
+          <div class="cardxx" onclick="showFocusImage('Card/14.jpg')">
+            <img src="Card/14.jpg" alt="Ucapan 14" />
+          </div>
+
+          <!-- Kartu 15 -->
+          <div class="cardxx" onclick="showFocusImage('Card/15.jpg')">
+            <img src="Card/15.jpg" alt="Ucapan 15" />
           </div>
         </div>
       </div>
-    </section>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn" id="nextBtn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Tampilan Fokus Gambar -->
+      <div id="focusView" class="focus-view" onclick="hideFocusImage()">
+        <div class="focus-content">
+          <span class="close-focus">&times;</span>
+          <img id="focusImage" src="" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <h1>Frequently Asked Questions</h1>
+
+      <!-- 1 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apa itu NARSAFE?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          NARSAFE merupakan platform yang berfokus pada kesadaran akan narsisme
+          dan penerimaan diri, melalui pendekatan psikologis dan sosiologis.
+          Kami menyediakan tools dan resources untuk membantu individu dalam
+          perjalanan self-awareness dan personal growth.
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Kenapa kesadaran akan narsisme itu penting?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Karena memahami narsisme berarti memahami pola yang memengaruhi hidup
+          kita secara emosional, mental, dan sosial. Tanpa kesadaran ini, kita
+          sering terjebak dalam lingkaran hubungan yang tidak sehat dan
+          kehilangan arah dalam mengenal diri sendiri. Kesadaran adalah langkah
+          pertama untuk melindungi diri, memutus siklus toxic, dan membangun
+          batasan yang sehat.
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana NARSAFE membantu meningkatkan self-awareness?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          NARSAFE menyediakan kombinasi edukasi psikologis, panduan praktis, dan
+          refleksi diri yang terstruktur. Setiap artikel, tool, dan materi kami
+          dirancang untuk membantu Anda memahami emosi, mengenali pola perilaku,
+          dan menemukan cara merespons situasi dengan lebih sehat. Fokus kami
+          bukan hanya memberikan informasi, tapi membantu Anda benar-benar
+          menerapkannya dalam kehidupan sehari-hari.
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>
+            Apakah NARSAFE hanya untuk orang yang mengalami hubungan dengan
+            narsisis?
+          </span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Tidak. NARSAFE dirancang untuk siapa saja yang ingin mengenal diri
+          lebih dalam, memahami dinamika hubungan, dan mengembangkan pola pikir
+          yang lebih sehat. Baik Anda pernah mengalami hubungan narsistik,
+          berada di lingkungan yang toxic, atau sekadar ingin tumbuh menjadi
+          versi terbaik dari diri Anda, NARSAFE bisa menjadi teman perjalanan
+          Anda.
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana cara ikut berkontribusi?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Anda bisa menjadi kontributor dengan mendaftar di halaman "Bergabung"
+          dan mengirimkan karya, artikel, atau ide Anda. Dengan berkontribusi,
+          Anda turut membantu menyebarkan edukasi dan menciptakan ruang aman
+          bagi banyak orang.
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Kenapa NARSAFE berbeda dari platform self-help lainnya?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Kami tidak sekadar memberi motivasi atau tips cepat. NARSAFE
+          menggabungkan pendekatan psikologi dan sosiologi yang berbasis riset,
+          disajikan dengan bahasa yang empatik dan relevan. Kami percaya healing
+          dan self-awareness adalah perjalanan, bukan kompetisi — dan kami hadir
+          untuk menemani Anda dengan konten yang mendalam, actionable, dan penuh
+          empati.
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apakah bergabung dengan NARSAFE berbayar atau gratis?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Kami menyediakan platform ini secara <strong>gratis</strong> kepada
+          kalian sebab tujuan kami adalah <strong>untuk memberi edukasi</strong>
+          mengenai sifat narsistik dan membantu kalian untuk mengenal lebih
+          dalam mengenai sifat tersebut.
+        </div>
+      </div>
+    </div>
+
+    <div class="quotex" style="background-image: url(Image/kt.jpg)">
+      <h2>
+        Apa yang kita pikirkan menentukan apa yang akan terjadi pada kita. Jadi
+        jika kita ingin mengubah hidup, kita perlu sedikit mengubah pikiran
+        kita.
+      </h2>
+      <h3>- Wayne Dyer</h3>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1753,14 +2191,6 @@
               profesional, kami sarankan untuk berkonsultasi dengan ahli
               psikologi atau tenaga medis yang berlisensi.
             </p>
-            <div class="social-links mt-4">
-              <a href="#" aria-label="Twitter"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a href="#" aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
           </div>
           <div class="col-lg-2 col-md-6 mb-4 mb-md-0 footer-links">
             <h5>Navigate</h5>
@@ -1768,14 +2198,13 @@
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#features">Features</a></li>
-              <li><a href="#news">News</a></li>
+              <li><a href="#news">Blog</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h5>Support</h5>
             <ul class="list-unstyled">
-              <li><a href="/Footer/FAQ.html">FAQ</a></li>
               <li>
                 <a href="/Footer/terms_of_service.html">Terms of Service</a>
               </li>
@@ -1791,6 +2220,113 @@
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="terra.js"></script>
+    <script>
+      // Simpan index FAQ yang aktif
+      let activeFaqIndex = null;
+
+      // Fungsi untuk mengecek apakah elemen terlihat di viewport
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) *
+              1.2 &&
+          rect.right <=
+            (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+
+      // Fungsi untuk toggle FAQ
+      function toggleFaq(index) {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        // Jika ada yang aktif, tutup dulu
+        if (activeFaqIndex !== null) {
+          faqItems[activeFaqIndex].classList.remove("active");
+        }
+
+        // Jika yang diklik sama dengan yang aktif -> tutup semua
+        if (activeFaqIndex === index) {
+          activeFaqIndex = null;
+        } else {
+          // Buka yang diklik
+          faqItems[index].classList.add("active");
+          activeFaqIndex = index;
+
+          // Scroll agar terlihat di viewport
+          if (!isElementInViewport(faqItems[index])) {
+            faqItems[index].scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        }
+      }
+
+      // Tambahkan event listener untuk setiap FAQ item
+      document.addEventListener("DOMContentLoaded", () => {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item, index) => {
+          const question = item.querySelector(".faq-question");
+          question.addEventListener("click", () => toggleFaq(index));
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.querySelector(".cards-container .carousel");
+        const prevBtn = document.querySelector(".cards-container #prevBtn");
+        const nextBtn = document.querySelector(".cards-container #nextBtn");
+        let cardWidth = 320; // card width + margin
+        let currentPosition = 0;
+
+        prevBtn.addEventListener("click", () => {
+          if (currentPosition < 0) {
+            currentPosition += cardWidth;
+            carousel.style.transform = `translateX(${currentPosition}px)`;
+          }
+        });
+
+        nextBtn.addEventListener("click", () => {
+          const maxPosition = -(carousel.children.length - 3) * cardWidth;
+          if (currentPosition > maxPosition) {
+            currentPosition -= cardWidth;
+            carousel.style.transform = `translateX(${currentPosition}px)`;
+          }
+        });
+
+        // Fokus image functionality
+        window.showFocusImage = function (imageSrc) {
+          const focusView = document.getElementById("focusView");
+          const focusImage = document.getElementById("focusImage");
+
+          focusImage.src = imageSrc;
+          focusView.style.display = "block";
+          document.body.style.overflow = "hidden";
+        };
+
+        window.hideFocusImage = function () {
+          const focusView = document.getElementById("focusView");
+          focusView.style.display = "none";
+          document.body.style.overflow = "auto";
+        };
+
+        // Adjust carousel for mobile
+        function adjustCarousel() {
+          if (window.innerWidth <= 768) {
+            cardWidth = 270; // Adjust for mobile
+          } else {
+            cardWidth = 320; // Default width
+          }
+        }
+
+        window.addEventListener("resize", adjustCarousel);
+        adjustCarousel(); // Call on load
+      });
+    </script>
   </body>
 </html>
-
