@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="/Image/logo.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Narsafe - Blog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #334155;
+        --secondary-color: #475569;
+        --accent-color: #6366f1;
+        --light-bg: #000000;
+        --dark-text: #f8f8f8;
+        --thirdcolor: #18a6de;
+        --light-text: #000000;
+        --transition-speed: 0.5s;
+        --grid-line-color: rgba(255, 255, 255, 0.1);
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --card-hover: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: black;
+        color: var(--dark-text);
+        line-height: 1.7;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        overflow-x: hidden;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--thirdcolor);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #0d8ec7;
+      }
+
+      /* Grid Lines Background */
+      .grid-lines {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      .grid-line {
+        width: 1px;
+        height: 100%;
+        background-color: var(--grid-line-color);
+        position: absolute;
+        top: 0;
+      }
+
+      .line-1 {
+        left: 10%;
+      }
+      .line-2 {
+        left: 30%;
+      }
+      .line-3 {
+        left: 70%;
+      }
+      .line-4 {
+        left: 90%;
+      }
+
+      .grid-line-horizontal {
+        width: 100%;
+        height: 1px;
+        background-color: var(--grid-line-color);
+        position: absolute;
+        left: 0;
+      }
+
+      .line-h-1 {
+        top: 20%;
+      }
+      .line-h-2 {
+        top: 80%;
+      }
+
+      /* Animated Background */
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background: linear-gradient(45deg, #000000, #01060d, #000000);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+      }
+
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        line-height: 2.5rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.4s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logolight {
+        display: inline;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(0, 0, 0, 0.9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        padding: 10px 0;
+      }
+
+      .navbar.scrolled .navbar-brand {
+        color: var(--thirdcolor);
+      }
+
+      .navbar.scrolled .nav-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      .navbar.scrolled .nav-link.active {
+        background-color: var(--thirdcolor) !important;
+        color: rgb(255, 255, 255) !important;
+      }
+
+      .navbar.scrolled .nav-link:hover {
+        background-color: rgba(24, 166, 222, 0.2) !important;
+        color: var(--thirdcolor) !important;
+      }
+
+      .nav-link {
+        color: rgb(255, 255, 255) !important;
+        font-weight: 300;
+        padding: 0.7rem 1.2rem !important;
+        margin: 0 3px;
+        transition: all var(--transition-speed);
+        border-radius: 1px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--thirdcolor);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::before {
+        width: 100%;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        transform: translateY(-2px);
+      }
+
+      .nav-link.active {
+        color: white !important;
+        font-size: 1.2rem;
+        background-color: rgba(24, 166, 222, 0.3);
+      }
+
+      .navbar-toggler {
+        background-color: transparent;
+        padding: 0.5rem;
+        border: none;
+      }
+
+      .navbar-toggler-icon {
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        vertical-align: middle;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='shape' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-toggler:hover .navbar-toggler-icon {
+        transform: rotate(90deg);
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none !important;
+        outline: none;
+      }
+
+      /* Header Section */
+      .header-section {
+        background: linear-gradient(
+            135deg,
+            rgba(2, 46, 57, 0.7),
+            rgba(0, 0, 0, 0.746)
+          ),
+          url("/Image/kt.jpg") no-repeat center center/cover;
+        color: white;
+        padding: 200px 0 180px;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at top right,
+          rgba(0, 14, 20, 0.623),
+          transparent 70%
+        );
+        z-index: 1;
+      }
+
+      .header-content {
+        max-width: 1000px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .header-section h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        animation: fadeInUp 1s ease;
+        color: var(--thirdcolor);
+        text-shadow: none;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: 2s ease;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+
+      .header-section .h1--visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .header-section .subtitle {
+        font-size: 2.2rem;
+        font-weight: 300;
+        animation: fadeInUp 1s ease 0.2s;
+        animation-fill-mode: both;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .header-section .lead {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        max-width: 800px;
+        animation: fadeInUp 1s ease 0.4s;
+        animation-fill-mode: both;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+      }
+
+      .header-buttons {
+        animation: fadeInUp 1s ease 0.6s;
+        animation-fill-mode: both;
+      }
+
+      .btn-header {
+        padding: 12px 30px;
+        margin-right: 15px;
+        border-radius: 1px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .btn-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: -1;
+        transition: all 0.3s ease;
+        transform: translateX(-100%);
+      }
+
+      .btn-header:hover::before {
+        transform: translateX(0);
+      }
+
+      .btn-primary-custom {
+        background-color: var(--thirdcolor);
+        color: white;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #0d8ec7;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(24, 166, 222, 0.3);
+      }
+
+      .btn-outline-custom {
+        background-color: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .btn-outline-custom:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: white;
+        transform: translateY(-3px);
+      }
+
+      /* News Section */
+      .sectionnews {
+        padding: 100px 0;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        color: black;
+        background-color: white;
+        padding: 10px 20px;
+      }
+
+      .card {
+        background-color: #012e3e;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        height: 100%;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        background-color: var(--card-hover);
+        border-color: var(--thirdcolor);
+      }
+
+      .card-img-top {
+        height: 220px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+      }
+
+      .card:hover .card-img-top {
+        transform: scale(1.05);
+      }
+
+      .card-body {
+        padding: 25px;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: white;
+        line-height: 1.4;
+      }
+
+      .card-text1 {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .btn-outline-primary {
+        color: var(--thirdcolor);
+        border-color: var(--thirdcolor);
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--thirdcolor);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(24, 166, 222, 0.3);
+      }
+
+      /* Modal Styles */
+      .modal-content {
+        background-color: #1a1a2e;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .modal-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      .modal-title {
+        color: white;
+        font-weight: 600;
+      }
+
+      .btn-close {
+        filter: invert(1);
+        opacity: 0.7;
+      }
+
+      .btn-close:hover {
+        opacity: 1;
+      }
+
+      .modal-body {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+      }
+
+      .modal-body h6 {
+        color: var(--thirdcolor);
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .modal-body ul {
+        padding-left: 20px;
+      }
+
+      .modal-body li {
+        margin-bottom: 10px;
+      }
+
+      .modal-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background-color: #4a4a6a;
+        border: none;
+        border-radius: 50px;
+        padding: 8px 20px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background-color: #5a5a7a;
+        transform: translateY(-2px);
+      }
+
+      /* Audio Section Styles */
+      .audio-section {
+        padding: 80px 30px;
+        background-color: rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .audio-section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+        color: var(--thirdcolor);
+        text-align: center;
+        position: relative;
+      }
+
+      .audio-card {
+        background-color: #012e3e;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        margin-bottom: 30px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+
+      .audio-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        background-color: var(--card-hover);
+      }
+
+      .audio-card-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .audio-card-body {
+        padding: 20px;
+      }
+
+      .audio-card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .audio-card-description {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .audio-player {
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .audio-player audio {
+        width: 100%;
+        height: 40px;
+      }
+
+      /* Journal Section */
+      #journal {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      #journal h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+        color: var(--thirdcolor);
+        position: relative;
+        display: inline-block;
+      }
+
+      #journal h1::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--thirdcolor),
+          transparent
+        );
+      }
+
+      /* Image Modal */
+      .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 80%;
+        max-height: 80%;
+        animation: zoomIn 0.3s ease;
+        border-radius: 10px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 15px 0;
+        font-size: 1.1rem;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 25px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .close-modal:hover,
+      .close-modal:focus {
+        color: var(--thirdcolor);
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* Footer */
+      footer {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 70px 0 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      footer h5 {
+        color: var(--thirdcolor);
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      footer p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links ul li a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        padding-left: 15px;
+      }
+
+      .footer-links ul li a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 5px;
+        height: 5px;
+        background-color: var(--thirdcolor);
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--thirdcolor);
+        padding-left: 20px;
+      }
+
+      .footer-links ul li a:hover::before {
+        opacity: 1;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        line-height: 40px text-align: center;
+       ;
+        margin-right: 10px;
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--thirdcolor);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(24, 166, 222, 0.3);
+      }
+
+      .copyright {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .delay-100 {
+        transition-delay: 0.1s;
+      }
+
+      .delay-200 {
+        transition-delay: 0.2s;
+      }
+
+      /* Responsive */
+      @media (max-width: 991px) {
+        .header-section h1 {
+          font-size: 3rem;
+        }
+
+        .header-section .subtitle {
+          font-size: 1.8rem;
+        }
+
+        .header-section .lead {
+          font-size: 1.1rem;
+        }
+
+        .section-title,
+        #journal h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .header-section {
+          padding: 150px 0 120px;
+        }
+
+        .header-section h1 {
+          font-size: 2.5rem;
+        }
+
+        .header-section .subtitle {
+          font-size: 1.5rem;
+        }
+
+        .btn-header {
+          display: block;
+          width: 100%;
+          margin-bottom: 15px;
+          margin-right: 0;
+        }
+
+        .section-title,
+        #journal h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="animated-bg"></div>
+
+    <div class="grid-lines">
+      <div class="grid-line line-1"></div>
+      <div class="grid-line line-2"></div>
+      <div class="grid-line line-3"></div>
+      <div class="grid-line line-4"></div>
+      <div class="grid-line-horizontal line-h-1"></div>
+      <div class="grid-line-horizontal line-h-2"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#home">
+          <img src="/Image/Narsafe logo 2.png" class="logolight" width="90%" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/modules.html">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="header-section" id="home">
+      <div class="container">
+        <div class="header-content">
+          <h1 class="display-4 fw-bold">Insight Modules</h1>
+          <p class="subtitle">Temukan Diri yang Lebih Baik</p>
+          <p class="lead">
+            Mulai perjalanan refleksi harian Anda dengan mengakses berbagai
+            literasi yang dapat membantu Anda memahami dan mengelola sifat
+            narsistik.
+          </p>
+          <div class="header-buttons">
+            <a href="#news" class="btn btn-header btn-primary-custom"
+              >Jelajahi Sekarang</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="sectionnews" id="news">
+      <div class="container">
+        <h2 class="section-title">
+          Temukan berbagai literasi yang ada pada Narsafe
+        </h2>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 fade-in">
+            <div class="card h-100">
+              <img
+                src="/Image/image.png"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Studi Terbaru Mengenai Narsisme di Media Sosial
+                </h5>
+                <p class="card-text1">
+                  Penelitian menunjukkan bahwa penggunaan media sosial yang
+                  berlebihan dapat memperkuat perilaku narsistik. Bagaimana kita
+                  bisa menggunakan media sosial secara sehat?
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal1"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-100">
+            <div class="card h-100">
+              <img
+                src="/Image/narc2.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Refleksi Diri: Kunci Menghadapi Sifat Narsistik
+                </h5>
+                <p class="card-text1">
+                  Pentingnya menyadari emosi dan pola pikir sebagai langkah awal
+                  menuju penerimaan diri. Bagaimana praktik refleksi harian
+                  dapat membantu?
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal2"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-200">
+            <div class="card h-100">
+              <img
+                src="/Image/terar.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Understanding the Spectrum of Narcissism
+                </h5>
+                <p class="card-text1">
+                  New research suggests narcissism exists on a spectrum, with
+                  healthy self-confidence on one end and pathological narcissism
+                  on the other.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal3"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 10 Artikel Baru -->
+          <div class="col-lg-4 col-md-6 mb-4 fade-in">
+            <div class="card h-100">
+              <img
+                src="/Sources/love.webp"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mengenali Tanda-Tanda Narsisme dalam Hubungan
+                </h5>
+                <p class="card-text1">
+                  Bagaimana cara mengidentifikasi pola perilaku narsistik dalam
+                  hubungan pribadi dan langkah-langkah untuk menghadapinya.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal4"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-100">
+            <div class="card h-100">
+              <img src="/Image/mm.jpg" class="card-img-top" alt="News Image" />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Teknik Mindfulness untuk Mengurangi Sifat Narsistik
+                </h5>
+                <p class="card-text1">
+                  Pelajari praktik mindfulness yang dapat membantu mengembangkan
+                  kesadaran diri dan mengurangi kecenderungan narsistik.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal5"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-200">
+            <div class="card h-100">
+              <img
+                src="/Sources/lx.webp"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Dampak Narsisme terhadap Kesehatan Mental
+                </h5>
+                <p class="card-text1">
+                  Memahami hubungan antara narsisme dengan berbagai masalah
+                  kesehatan mental seperti depresi dan kecemasan.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal6"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/seed/narc7/400/300.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Membangun Empati: Lawan dari Narsisme
+                </h5>
+                <p class="card-text1">
+                  Bagaimana mengembangkan kemampuan empati sebagai cara untuk
+                  mengatasi kecenderungan narsistik dalam diri.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal7"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-100">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/seed/narc8/400/300.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Peran Orang Tua dalam Mencegah Narsisme pada Anak
+                </h5>
+                <p class="card-text1">
+                  Strategi parenting yang efektif untuk mencegah berkembangnya
+                  sifat narsistik pada anak sejak dini.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal8"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-200">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/seed/narc9/400/300.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Terapi untuk Gangguan Kepribadian Narsistik
+                </h5>
+                <p class="card-text1">
+                  Jenis-jenis terapi yang efektif untuk mengatasi gangguan
+                  kepribadian narsistik dan prosesnya.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal9"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/seed/narc10/400/300.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Keseimbangan antara Percaya Diri dan Narsisme
+                </h5>
+                <p class="card-text1">
+                  Bagaimana membedakan antara percaya diri yang sehat dengan
+                  perilaku narsistik yang merugikan.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal10"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-100">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/seed/narc11/400/300.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Narsisme di Tempat Kerja: Cara Menghadapinya
+                </h5>
+                <p class="card-text1">
+                  Strategi untuk mengidentifikasi dan menghadapi rekan kerja
+                  atau atasan dengan sifat narsistik.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal11"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 fade-in delay-200">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/seed/narc12/400/300.jpg"
+                class="card-img-top"
+                alt="News Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Menyembuhkan Luka Batin Akibat Hubungan dengan Narsis
+                </h5>
+                <p class="card-text1">
+                  Proses pemulihan untuk korban hubungan dengan pribadi
+                  narsistik dan cara membangun kembali harga diri.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newsModal12"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio Section -->
+    <section class="audio-section" id="audio">
+      <div class="container">
+        <h2 class="audio-section-title">Narsafe Podcast</h2>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="audio-card">
+              <img src="/Sources/2.jpg" class="audio-card-img" alt="Audio 1" />
+              <div class="audio-card-body">
+                <h5 class="audio-card-title">
+                  <strong>Percaya Diri atau Narsistik? Yuk, Bedakan!</strong
+                  ><br />
+                  Nurleli Purnamasari, M.Psi., Psikolog
+                </h5>
+                <p class="audio-card-description">
+                  Dalam episode ini, Kak Nurleli membahas perbedaan antara
+                  percaya diri yang sehat dan perilaku narsistik yang merugikan,
+                  serta bagaimana kita bisa mengembangkan rasa percaya diri
+                  tanpa jatuh ke dalam perangkap narsisme.
+                </p>
+
+                <div class="audio-player">
+                  <audio controls>
+                    <source
+                      src="/Sources/Podcast Bu Nurleli.mp3"
+                      type="audio/mpeg"
+                    />
+                    Browser Anda tidak mendukung tag audio.
+                  </audio>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="audio-card">
+              <img src="/Sources/3.jpg" class="audio-card-img" alt="Audio 2" />
+              <div class="audio-card-body">
+                <h5 class="audio-card-title">
+                  <strong> Setiap Remaja Bisa Pulih: NARSAFE</strong>
+                  <br />Bareng Kak Nurul
+                </h5>
+                <p class="audio-card-description">
+                  Dalam episode ini, Kak Nurul berbagi pengalaman pribadinya
+                  dalam menghadapi tantangan narsistik selama masa remaja dan
+                  bagaimana dia berhasil pulih serta menemukan kekuatan dalam
+                  dirinya.
+                </p>
+
+                <div class="audio-player">
+                  <audio controls>
+                    <source
+                      src="/Sources/podcast Bu nurul.mp3"
+                      type="audio/mpeg"
+                    />
+                    Browser Anda tidak mendukung tag audio.
+                  </audio>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="audio-card">
+              <img
+                src="/Sources/friend.webp"
+                class="audio-card-img"
+                alt="Audio 3"
+              />
+              <div class="audio-card-body">
+                <h5 class="audio-card-title">
+                  Kalau Temanmu Narsistik, Kamu Harus Gimana?
+                </h5>
+                <p class="audio-card-description">
+                  Dalam episode ini, kita membahas bagaimana mengenali teman
+                  dengan sifat narsistik, dampaknya pada hubungan, dan strategi
+                  untuk menjaga kesejahteraan diri sendiri.
+                </p>
+                <div class="audio-player">
+                  <audio controls>
+                    <source src="/Sources/podcast depi.mp3" type="audio/mpeg" />
+                    Browser Anda tidak mendukung tag audio.
+                  </audio>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="audio-card">
+              <img src="/Image/five.jpg" class="audio-card-img" alt="Audio 4" />
+              <div class="audio-card-body">
+                <h5 class="audio-card-title">
+                  Ngobrol Jujur: Remaja, Narsistik, dan Harapan
+                </h5>
+                <p class="audio-card-description">
+                  Episode ini mengajak remaja untuk berbicara terbuka tentang
+                  pengalaman mereka dengan narsisme, bagaimana hal itu
+                  mempengaruhi harapan mereka, dan cara membangun citra diri
+                  yang positif.
+                </p>
+                <div class="audio-player">
+                  <audio controls>
+                    <source
+                      src="/Sources/lv_0_20250916175523.mp3"
+                      type="audio/mpeg"
+                    />
+                    Browser Anda tidak mendukung tag audio.
+                  </audio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Modals -->
+    <div
+      class="modal fade"
+      id="newsModal1"
+      tabindex="-1"
+      aria-labelledby="newsModal1Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal1Label">
+              Studi Terbaru Mengenai Narsisme di Media Sosial
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="Image/image.png"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Penelitian terbaru yang dipublikasikan dalam Journal of
+              Personality and Social Psychology menunjukkan korelasi yang
+              signifikan antara penggunaan media sosial yang berlebihan dengan
+              peningkatan perilaku narsistik pada individu.
+            </p>
+            <p>
+              Studi yang melibatkan lebih dari 2,000 responden ini menemukan
+              bahwa mereka yang menghabiskan lebih dari 3 jam sehari di platform
+              media sosial menunjukkan peningkatan tanda-tanda narsisme seperti
+              kebutuhan akan validasi eksternal dan fokus berlebihan pada citra
+              diri.
+            </p>
+            <p>
+              Dr. Amanda Rodriguez, peneliti utama studi ini, menyatakan: "Media
+              sosial pada dasarnya bukan hal yang buruk, tetapi cara kita
+              menggunakannya dapat berdampak signifikan pada kesehatan mental
+              dan persepsi diri kita. Penting untuk membangun kebiasaan digital
+              yang sehat."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Tips Menggunakan Media Sosial Secara Sehat:
+            </h6>
+            <ul>
+              <li>Batasi waktu penggunaan media sosial harian</li>
+              <li>
+                Fokus pada koneksi otentik daripada jumlah likes atau followers
+              </li>
+              <li>Refleksikan motivasi Anda dalam memposting konten</li>
+              <li>
+                Hindari membandingkan diri Anda dengan orang lain di media
+                sosial
+              </li>
+              <li>Jadwalkan "digital detox" secara berkala</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div
+      class="modal fade"
+      id="newsModal2"
+      tabindex="-1"
+      aria-labelledby="newsModal2Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal2Label">
+              Refleksi Diri: Kunci Menghadapi Sifat Narsistik
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="Image/narc2.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Refleksi diri adalah praktik powerful yang memungkinkan kita untuk
+              melihat ke dalam diri, mengenali pola pikir dan perilaku, serta
+              membuat perubahan positif. Bagi individu dengan kecenderungan
+              narsistik, refleksi diri menjadi alat penting untuk mengembangkan
+              kesadaran diri yang lebih sehat.
+            </p>
+            <p>
+              Menurut Dr. James Williams, psikolog klinis dengan spesialisasi
+              dalam gangguan kepribadian, "Refleksi diri memungkinkan seseorang
+              untuk melihat diri mereka dari perspektif yang lebih objektif,
+              mengenali dampak perilaku mereka terhadap orang lain, dan
+              mengembangkan empati yang mungkin sebelumnya kurang terasah."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Manfaat Refleksi Diri untuk Mengatasi Narsisme:
+            </h6>
+            <ul>
+              <li>Meningkatkan kesadaran akan pola pikir dan perilaku</li>
+              <li>
+                Mengembangkan kemampuan untuk melihat dari perspektif orang lain
+              </li>
+              <li>Mengurangi kebutuhan akan validasi eksternal</li>
+              <li>Membangun hubungan yang lebih otentik dengan orang lain</li>
+              <li>
+                Meningkatkan kemampuan untuk menerima kritik dan umpan balik
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">Teknik Refleksi Diri yang Efektif:</h6>
+            <ul>
+              <li>Menulis jurnal harian tentang interaksi dan perasaan</li>
+              <li>Meditasi dan mindfulness untuk meningkatkan kesadaran</li>
+              <li>Mencari umpan balik jujur dari orang terpercaya</li>
+              <li>Berbicara dengan profesional kesehatan mental</li>
+              <li>Latihan menempatkan diri pada posisi orang lain</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div
+      class="modal fade"
+      id="newsModal3"
+      tabindex="-1"
+      aria-labelledby="newsModal3Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal3Label">
+              Understanding the Spectrum of Narcissism
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="Image/terar.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Narsisme sering dipahami sebagai kondisi hitam-putih, tetapi
+              penelitian terbaru menunjukkan bahwa narsisme sebenarnya ada pada
+              spektrum yang luas. Pada satu ujung, kita memiliki percaya diri
+              yang sehat dan harga diri yang positif, sementara di ujung lain
+              terdapat gangguan kepribadian narsistik yang patologis.
+            </p>
+            <p>
+              Dr. Sarah Johnson, peneliti dari University of Psychology,
+              menjelaskan: "Kebanyakan orang memiliki beberapa sifat narsistik
+              hingga tingkat tertentu. Ini menjadi masalah ketika sifat-sifat
+              tersebut menjadi ekstrem, kaku, dan menyebabkan masalah signifikan
+              dalam fungsi sosial dan personal seseorang."
+            </p>
+            <h6 class="mt-4 fw-bold">Tingkatan pada Spektrum Narsisme:</h6>
+            <ul>
+              <li>
+                <strong>Percaya Diri Sehat:</strong> Harga diri positif tanpa
+                merendahkan orang lain
+              </li>
+              <li>
+                <strong>Narsisme Subklinis:</strong> Beberapa sifat narsistik
+                yang tidak signifikan secara klinis
+              </li>
+              <li>
+                <strong>Narsisme Maladaptif:</strong> Pola pikir dan perilaku
+                yang mulai mengganggu hubungan
+              </li>
+              <li>
+                <strong>Gangguan Kepribadian Narsistik:</strong> Kondisi klinis
+                yang memerlukan intervensi profesional
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Tanda-Tanda Narsisme yang Sehat vs Tidak Sehat:
+            </h6>
+            <ul>
+              <li>
+                <strong>Sehat:</strong> Mampu menerima kritik,
+                <strong>Tidak Sehat:</strong> Bereaksi defensif terhadap kritik
+              </li>
+              <li>
+                <strong>Sehat:</strong> Merayakan prestasi orang lain,
+                <strong>Tidak Sehat:</strong> Iri terhadap kesuksesan orang lain
+              </li>
+              <li>
+                <strong>Sehat:</strong> Memiliki ambisi realistis,
+                <strong>Tidak Sehat:</strong> Memiliki ekspektasi berlebihan
+                tentang perlakuan khusus
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div
+      class="modal fade"
+      id="newsModal4"
+      tabindex="-1"
+      aria-labelledby="newsModal4Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal4Label">
+              Mengenali Tanda-Tanda Narsisme dalam Hubungan
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc4/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Hubungan dengan individu yang memiliki sifat narsistik bisa sangat
+              menantang dan merusak kesehatan emosional. Mengenali tanda-tanda
+              narsisme dalam hubungan adalah langkah pertama yang penting untuk
+              melindungi diri dan membuat keputusan yang tepat.
+            </p>
+            <p>
+              Menurut Dr. Lisa Martinez, psikolog hubungan, "Narsisme dalam
+              hubungan seringkali dimulai dengan hal-hal kecil yang mungkin
+              tampak tidak berbahaya, tetapi secara bertahap berkembang menjadi
+              pola perilaku yang manipulatif dan merugikan."
+            </p>
+            <h6 class="mt-4 fw-bold">Tanda-Tanda Narsisme dalam Hubungan:</h6>
+            <ul>
+              <li>
+                <strong>Love Bombing:</strong> Pujian dan perhatian berlebihan
+                di awal hubungan, diikuti dengan penarikan drastis
+              </li>
+              <li>
+                <strong>Manipulasi Emosional:</strong> Menggunakan rasa
+                bersalah, takut, atau simpati untuk mengontrol
+              </li>
+              <li>
+                <strong>Kritik Konstan:</strong> Mengkritik penampilan,
+                keputusan, atau tindakan Anda secara terus-menerus
+              </li>
+              <li>
+                <strong>Kurangnya Empati:</strong> Tidak mampu atau tidak mau
+                memahami perasaan dan kebutuhan Anda
+              </li>
+              <li>
+                <strong>Gaslighting:</strong> Membuat Anda meragukan realitas
+                dan persepsi Anda sendiri
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Cara Menghadapi Narsisme dalam Hubungan:
+            </h6>
+            <ul>
+              <li>Tetapkan batas yang jelas dan konsisten</li>
+              <li>Jangan terjebak dalam argumen yang tidak produktif</li>
+              <li>Cari dukungan dari teman, keluarga, atau profesional</li>
+              <li>Fokus pada kebutuhan dan kesejahteraan Anda sendiri</li>
+              <li>
+                Pertimbangkan untuk meninggalkan hubungan jika tidak ada
+                perubahan
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div
+      class="modal fade"
+      id="newsModal5"
+      tabindex="-1"
+      aria-labelledby="newsModal5Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal5Label">
+              Teknik Mindfulness untuk Mengurangi Sifat Narsistik
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc5/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Mindfulness adalah praktik yang telah terbukti efektif untuk
+              mengurangi berbagai masalah kesehatan mental, termasuk sifat
+              narsistik. Dengan melatih kesadaran penuh pada saat ini tanpa
+              penilaian, individu dapat mengembangkan pemahaman yang lebih dalam
+              tentang pikiran, emosi, dan perilaku mereka.
+            </p>
+            <p>
+              Dr. Michael Chen, ahli mindfulness dan psikologi klinis,
+              menjelaskan: "Mindfulness membantu individu dengan kecenderungan
+              narsistik untuk keluar dari pola pikir egosentris dan
+              mengembangkan kemampuan untuk melihat diri mereka sebagai bagian
+              dari sesuatu yang lebih besar daripada diri mereka sendiri."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Teknik Mindfulness untuk Mengurangi Narsisme:
+            </h6>
+            <ul>
+              <li>
+                <strong>Meditasi Pernapasan:</strong> Fokus pada napas untuk
+                menenangkan pikiran dan mengurangi reaktivitas
+              </li>
+              <li>
+                <strong>Scanning Tubuh:</strong> Mengembangkan kesadaran
+                terhadap sensasi fisik tanpa penilaian
+              </li>
+              <li>
+                <strong>Observasi Pikiran:</strong> Melihat pikiran sebagai
+                peristiwa mental yang sementara, bukan fakta absolut
+              </li>
+              <li>
+                <strong>Praktik Gratitude:</strong> Mengembangkan apresiasi
+                terhadap orang lain dan hal-hal di luar diri sendiri
+              </li>
+              <li>
+                <strong>Compassion Meditation:</strong> Melatih diri untuk
+                mengembangkan rasa kasih terhadap diri dan orang lain
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Manfaat Mindfulness untuk Mengatasi Narsisme:
+            </h6>
+            <ul>
+              <li>Meningkatkan kesadaran diri dan pola pikir otomatis</li>
+              <li>Mengurangi reaktivitas emosional</li>
+              <li>
+                Mengembangkan kemampuan untuk melihat dari perspektif orang lain
+              </li>
+              <li>Meningkatkan kemampuan untuk menerima kritik</li>
+              <li>Mengurangi kebutuhan akan validasi eksternal</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div
+      class="modal fade"
+      id="newsModal6"
+      tabindex="-1"
+      aria-labelledby="newsModal6Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal6Label">
+              Dampak Narsisme terhadap Kesehatan Mental
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc6/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Narsisme tidak hanya mempengaruhi individu di sekitarnya, tetapi
+              juga memiliki dampak signifikan terhadap kesehatan mental orang
+              yang memiliki sifat-sifat tersebut. Meskipun narsis sering
+              menampilkan citra diri yang percaya diri dan kuat, di balik
+              permukaan mereka sering berjuang dengan masalah psikologis yang
+              dalam.
+            </p>
+            <p>
+              Dr. Rachel Thompson, psikiater dan peneliti dalam bidang gangguan
+              kepribadian, menjelaskan: "Individu dengan sifat narsistik sering
+              memiliki harga diri yang rapuh dan sangat bergantung pada validasi
+              eksternal. Ketika mereka tidak menerima pengakuan yang mereka
+              inginkan, ini dapat memicu berbagai masalah kesehatan mental."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Dampak Narsisme terhadap Kesehatan Mental:
+            </h6>
+            <ul>
+              <li>
+                <strong>Depresi:</strong> Perasaan kekosongan dan ketidakpuasan
+                yang mendasar meskipun pencapaian eksternal
+              </li>
+              <li>
+                <strong>Kecemasan:</strong> Ketakutan akan diekspos, dikritik,
+                atau tidak diakui
+              </li>
+              <li>
+                <strong>Gangguan Mood:</strong> Perubahan mood yang drastis
+                terkait dengan penerimaan atau penolakan
+              </li>
+              <li>
+                <strong>Perilaku Adiktif:</strong> Kecenderungan untuk
+                menggunakan zat atau kegiatan untuk menghindari emosi yang tidak
+                nyaman
+              </li>
+              <li>
+                <strong>Pikiran Obsesif:</strong> Fokus berlebihan pada status,
+                pencapaian, dan persepsi orang lain
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Cara Mengatasi Dampak Narsisme pada Kesehatan Mental:
+            </h6>
+            <ul>
+              <li>
+                Mencari bantuan profesional seperti psikolog atau psikiater
+              </li>
+              <li>
+                Partisipasi dalam terapi kelompok untuk mendapatkan dukungan
+              </li>
+              <li>Mengembangkan strategi koping yang sehat</li>
+              <li>Mempraktikkan mindfulness dan meditasi</li>
+              <li>Membangun hubungan yang sehat dan otentik</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 7 -->
+    <div
+      class="modal fade"
+      id="newsModal7"
+      tabindex="-1"
+      aria-labelledby="newsModal7Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal7Label">
+              Membangun Empati: Lawan dari Narsisme
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc7/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Empati adalah kemampuan untuk memahami dan berbagi perasaan orang
+              lain, dan sering dianggap sebagai lawan utama dari narsisme.
+              Sementara narsisme berfokus pada diri sendiri, empati memungkinkan
+              kita untuk terhubung dengan orang lain pada tingkat yang lebih
+              dalam dan bermakna.
+            </p>
+            <p>
+              Dr. Angela Foster, psikolog sosial dan peneliti empati,
+              menjelaskan: "Empati bukanlah sifat bawaan yang tetap, melainkan
+              kemampuan yang dapat dikembangkan dan diperkuat melalui latihan
+              dan kesadaran. Bagi individu dengan kecenderungan narsistik,
+              mengembangkan empati dapat menjadi jalan untuk hubungan yang lebih
+              sehat dan kepuasan hidup yang lebih besar."
+            </p>
+            <h6 class="mt-4 fw-bold">Manfaat Mengembangkan Empati:</h6>
+            <ul>
+              <li>Meningkatkan kualitas hubungan personal dan profesional</li>
+              <li>Mengurangi konflik dan meningkatkan pemahaman</li>
+              <li>Mengembangkan rasa koneksi dan keterikatan sosial</li>
+              <li>Meningkatkan kepuasan hidup dan kesejahteraan mental</li>
+              <li>Mengurangi kecenderungan perilaku manipulatif</li>
+            </ul>
+            <h6 class="mt-4 fw-bold">Latihan untuk Mengembangkan Empati:</h6>
+            <ul>
+              <li>
+                <strong>Active Listening:</strong> Mendengarkan sepenuh hati
+                tanpa menyiapkan respons
+              </li>
+              <li>
+                <strong>Perspective-Taking:</strong> Mencoba memahami situasi
+                dari sudut pandang orang lain
+              </li>
+              <li>
+                <strong>Reading Fiction:</strong> Membaca novel untuk memahami
+                pengalaman dan emosi karakter
+              </li>
+              <li>
+                <strong>Volunteer Work:</strong> Terlibat dalam kegiatan
+                sukarela untuk terhubung dengan orang lain
+              </li>
+              <li>
+                <strong>Gratitude Practice:</strong> Mengembangkan apresiasi
+                terhadap kontribusi orang lain
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 8 -->
+    <div
+      class="modal fade"
+      id="newsModal8"
+      tabindex="-1"
+      aria-labelledby="newsModal8Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal8Label">
+              Peran Orang Tua dalam Mencegah Narsisme pada Anak
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc8/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Perkembangan kepribadian anak sangat dipengaruhi oleh lingkungan
+              dan pengasuhan yang mereka terima. Orang tua memainkan peran
+              krusial dalam membentuk harga diri sehat anak dan mencegah
+              berkembangnya sifat narsistik yang dapat merugikan di masa depan.
+            </p>
+            <p>
+              Dr. Patricia Roberts, psikolog anak dan ahli pengasuhan,
+              menjelaskan: "Anak-anak yang tumbuh dengan pengasuhan yang
+              seimbang antara penerimaan tanpa syarat dan batasan yang jelas
+              cenderung mengembangkan harga diri yang stabil dan empati yang
+              kuat. Sebaliknya, pengasuhan yang berlebihan atau terlalu kritis
+              dapat berkontribusi pada perkembangan sifat narsistik."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Strategi Parenting untuk Mencegah Narsisme:
+            </h6>
+            <ul>
+              <li>
+                <strong>Pujian Upaya, Bukan Hanya Hasil:</strong> Menghargai
+                proses dan usaha anak daripada hanya pencapaian
+              </li>
+              <li>
+                <strong>Tetapkan Batas yang Konsisten:</strong> Memberikan
+                struktur dan aturan yang jelas dengan konsekuensi yang wajar
+              </li>
+              <li>
+                <strong>Ajarkan Empati:</strong> Membantu anak memahami dan
+                memperhatikan perasaan orang lain
+              </li>
+              <li>
+                <strong>Modelkan Perilaku Sehat:</strong> Menunjukkan contoh
+                bagaimana mengatasi kegagalan dan menerima kritik
+              </li>
+              <li>
+                <strong>Hindari Pembandingan:</strong> Tidak membandingkan anak
+                dengan orang lain, baik secara positif maupun negatif
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Tanda-Tanda Peringatan Narsisme pada Anak:
+            </h6>
+            <ul>
+              <li>Kesulitan menerima kritik atau kegagalan</li>
+              <li>Kecenderungan untuk menyalahkan orang lain</li>
+              <li>Kurangnya minat terhadap perasaan orang lain</li>
+              <li>Harapan berlebihan untuk perlakuan istimewa</li>
+              <li>Reaksi emosional yang ekstrem terhadap ketidakpuasan</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 9 -->
+    <div
+      class="modal fade"
+      id="newsModal9"
+      tabindex="-1"
+      aria-labelledby="newsModal9Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal9Label">
+              Terapi untuk Gangguan Kepribadian Narsistik
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc9/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Gangguan Kepribadian Narsistik (NPD) adalah kondisi kesehatan
+              mental yang kompleks dan seringkali menantang untuk diobati.
+              Namun, dengan pendekatan terapi yang tepat dan komitmen dari
+              individu, perubahan positif adalah mungkin.
+            </p>
+            <p>
+              Dr. Robert Kim, psikiater dengan spesialisasi dalam gangguan
+              kepribadian, menjelaskan: "Terapi untuk NPD memerlukan pendekatan
+              yang hati-hati dan bertahap. Banyak individu dengan NPD tidak
+              mencari bantuan kecuali mereka menghadapi konsekuensi serius
+              seperti kehilangan hubungan atau masalah hukum. Namun, dengan
+              motivasi yang tepat, perubahan signifikan dapat terjadi."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Jenis Terapi untuk Gangguan Kepribadian Narsistik:
+            </h6>
+            <ul>
+              <li>
+                <strong>Terapi Kognitif Perilaku (CBT):</strong> Membantu
+                mengidentifikasi dan mengubah pola pikir yang tidak sehat
+              </li>
+              <li>
+                <strong>Terapi Skema:</strong> Fokus pada pola pikir dan
+                perilaku yang berkembang sejak masa kanak-kanak
+              </li>
+              <li>
+                <strong>Terapi Dialéktikal Perilaku (DBT):</strong> Mengajarkan
+                keterampilan untuk mengatur emosi dan meningkatkan hubungan
+              </li>
+              <li>
+                <strong>Terapi Psikodinamik:</strong> Mengeksplorasi pengalaman
+                masa lalu yang mungkin berkontribusi pada perkembangan NPD
+              </li>
+              <li>
+                <strong>Terapi Kelompok:</strong> Memberikan kesempatan untuk
+                menerima umpan balik dari orang lain dalam lingkungan yang
+                terstruktur
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">Tantangan dalam Terapi NPD:</h6>
+            <ul>
+              <li>Kurangnya kesadaran atau motivasi untuk berubah</li>
+              <li>
+                Kecenderungan untuk meninggalkan terapi saat menghadapi
+                ketidaknyamanan
+              </li>
+              <li>Resistensi terhadap umpan balik atau kritik</li>
+              <li>Harapan untuk hasil instan</li>
+              <li>Kesulitan membangun hubungan terapeutik yang tepercaya</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 10 -->
+    <div
+      class="modal fade"
+      id="newsModal10"
+      tabindex="-1"
+      aria-labelledby="newsModal10Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal10Label">
+              Keseimbangan antara Percaya Diri dan Narsisme
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc10/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Percaya diri adalah kualitas positif yang penting untuk
+              kesejahteraan mental dan kesuksesan dalam hidup. Namun, ada garis
+              tipis antara percaya diri yang sehat dan narsisme yang merugikan.
+              Memahami perbedaan ini adalah kunci untuk mengembangkan harga diri
+              yang sehat tanpa jatuh ke dalam pola pikir narsistik.
+            </p>
+            <p>
+              Dr. Jennifer Lee, psikolog klinis dan peneliti harga diri,
+              menjelaskan: "Percaya diri yang sehat datang dari dalam dan tidak
+              bergantung pada validasi eksternal. Sebaliknya, narsisme sering
+              merupakan topeng untuk ketidakamanan yang mendalam dan memerlukan
+              konfirmasi konstan dari orang lain."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Perbedaan Antara Percaya Diri Sehat dan Narsisme:
+            </h6>
+            <ul>
+              <li>
+                <strong>Percaya Diri:</strong> Menerima kekuatan dan kelemahan
+                diri, <strong>Narsisme:</strong> Menyangkal kelemahan dan
+                melebih-lebihkan kekuatan
+              </li>
+              <li>
+                <strong>Percaya Diri:</strong> Merayakan kesuksesan orang lain,
+                <strong>Narsisme:</strong> Iri atau meremehkan kesuksesan orang
+                lain
+              </li>
+              <li>
+                <strong>Percaya Diri:</strong> Mampu menerima kritik dan belajar
+                darinya, <strong>Narsisme:</strong> Bereaksi defensif atau marah
+                terhadap kritik
+              </li>
+              <li>
+                <strong>Percaya Diri:</strong> Tidak memerlukan pujian konstan,
+                <strong>Narsisme:</strong> Membutuhkan perhatian dan pengakuan
+                yang berlebihan
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Cara Mengembangkan Percaya Diri yang Sehat:
+            </h6>
+            <ul>
+              <li>
+                Mengenali dan menghargai kekuatan pribadi tanpa membandingkan
+                diri dengan orang lain
+              </li>
+              <li>
+                Menerima kelemahan sebagai bagian alami dari menjadi manusia
+              </li>
+              <li>
+                Menetapkan dan mencapai tujuan realistis untuk membangun rasa
+                kompetensi
+              </li>
+              <li>
+                Belajar dari kegagalan tanpa menghakimi diri sendiri secara
+                berlebihan
+              </li>
+              <li>Mengembangkan hubungan yang saling mendukung dan otentik</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 11 -->
+    <div
+      class="modal fade"
+      id="newsModal11"
+      tabindex="-1"
+      aria-labelledby="newsModal11Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal11Label">
+              Narsisme di Tempat Kerja: Cara Menghadapinya
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc11/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Lingkungan kerja adalah tempat di mana sifat narsistik seringkali
+              muncul dan dapat menciptakan tantangan signifikan. Baik itu rekan
+              kerja, atasan, atau bahkan bawahan, individu dengan sifat
+              narsistik dapat menciptakan lingkungan yang toksik dan mengganggu
+              produktivitas.
+            </p>
+            <p>
+              Dr. Marcus Thompson, psikolog industri dan organisasional,
+              menjelaskan: "Narsisme di tempat kerja seringkali bermanifestasi
+              melalui perilaku seperti mengambil kredit untuk kerja orang lain,
+              mengkritik secara berlebihan, dan menciptakan konflik untuk
+              mendapatkan perhatian. Ini tidak hanya merugikan individu tetapi
+              juga seluruh tim dan organisasi."
+            </p>
+            <h6 class="mt-4 fw-bold">Tanda-Tanda Narsisme di Tempat Kerja:</h6>
+            <ul>
+              <li>Mengambil kredit untuk pencapaian tim atau orang lain</li>
+              <li>Menyalahkan orang lain untuk kesalahan atau kegagalan</li>
+              <li>Memerlukan pujian dan pengakuan yang berlebihan</li>
+              <li>Menolak umpan balik atau kritik konstruktif</li>
+              <li>
+                Mempermalukan atau merendahkan rekan kerja di depan orang lain
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">
+              Strategi Menghadapi Narsisme di Tempat Kerja:
+            </h6>
+            <ul>
+              <li>
+                <strong>Dokumentasi:</strong> Mencatat semua interaksi dan
+                pencapaian untuk perlindungan diri
+              </li>
+              <li>
+                <strong>Batasan yang Jelas:</strong> Menetapkan batasan
+                profesional yang tegas dan konsisten
+              </li>
+              <li>
+                <strong>Jangan Terlibat dalam Drama:</strong> Menghindari
+                konfrontasi emosional dan tetap profesional
+              </li>
+              <li>
+                <strong>Cari Dukungan:</strong> Membangun jaringan dukungan
+                dengan rekan kerja yang dapat dipercaya
+              </li>
+              <li>
+                <strong>Laporkan ke Atasan atau HR:</strong> Jika perilaku
+                mengganggu produktivitas atau menciptakan lingkungan kerja yang
+                tidak sehat
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 12 -->
+    <div
+      class="modal fade"
+      id="newsModal12"
+      tabindex="-1"
+      aria-labelledby="newsModal12Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModal12Label">
+              Menyembuhkan Luka Batin Akibat Hubungan dengan Narsis
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/seed/narc12/800/400.jpg"
+              class="img-fluid rounded mb-4"
+              alt="News Image"
+            />
+            <p>
+              Hubungan dengan individu narsistik dapat meninggalkan luka batin
+              yang mendalam dan bertahan lama. Korban seringkali mengalami
+              trauma, penurunan harga diri, dan kesulitan mempercayai orang
+              lain. Proses penyembuhan ini memerlukan waktu, dukungan, dan
+              komitmen untuk memulihkan kesehatan emosional.
+            </p>
+            <p>
+              Dr. Samantha Wright, terapis trauma dan hubungan, menjelaskan:
+              "Hubungan dengan narsis seringkali melibatkan siklus manipulasi
+              emosional yang secara bertahap mengikis harga diri korban.
+              Penyembuhan bukan hanya tentang keluar dari hubungan, tetapi juga
+              membangun kembali identitas dan kepercayaan diri yang telah
+              rusak."
+            </p>
+            <h6 class="mt-4 fw-bold">
+              Tanda-Tanda Trauma Akibat Hubungan dengan Narsis:
+            </h6>
+            <ul>
+              <li>
+                Rasa percaya diri yang rendah dan keraguan terhadap kemampuan
+                diri
+              </li>
+              <li>
+                Kesulitan membuat keputusan sederhana tanpa meminta validasi
+              </li>
+              <li>Gejala kecemasan, depresi, atau stres pascatrauma</li>
+              <li>
+                Kesulitan mempercayai orang lain atau membentuk hubungan baru
+              </li>
+              <li>
+                Kecenderungan untuk menyalahkan diri sendiri untuk masalah dalam
+                hubungan
+              </li>
+            </ul>
+            <h6 class="mt-4 fw-bold">Langkah-Langkah Menuju Penyembuhan:</h6>
+            <ul>
+              <li>
+                <strong>Acknowledge the Abuse:</strong> Mengakui bahwa Anda
+                mengalami penyalahgunaan emosional
+              </li>
+              <li>
+                <strong>Seek Professional Help:</strong> Bekerja dengan terapis
+                yang berpengalaman dalam trauma hubungan
+              </li>
+              <li>
+                <strong>Establish Boundaries:</strong> Membatasi atau memutus
+                kontak dengan individu narsistik
+              </li>
+              <li>
+                <strong>Rebuild Self-Esteem:</strong> Fokus pada kekuatan dan
+                pencapaian pribadi
+              </li>
+              <li>
+                <strong>Practice Self-Care:</strong> Mengembangkan rutinitas
+                perawatan diri yang mendukung kesehatan mental
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h5 class="text-uppercase mb-4">NARSAFE</h5>
+            <p>
+              Presented by <br />Silvia Manao | Maya Saira <br />
+              Club Karya Ilmiah Remaja SMAS Sultan Iskandar Muda Medan, Sumatera
+              Utara, Indonesia
+            </p>
+            <p>
+              Narsafe website bukan merupakan layanan psikolog profesional.
+              Semua konten yang disediakan bertujuan untuk memberikan informasi,
+              dukungan emosional, serta meningkatkan kesadaran tentang
+              pentingnya kesejahteraan mental. Jika Anda membutuhkan bantuan
+              profesional, kami sarankan untuk berkonsultasi dengan ahli
+              psikologi atau tenaga medis yang berlisensi.
+            </p>
+            <div class="social-links mt-4">
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h5>Support</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="Footer/terms_of_service.html">Terms of Service</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center copyright">
+          <p>&copy; 2025 NARSAFE. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="terra.js"></script>
+    <script>
+      // Navbar scroll effect
+      const navbar = document.querySelector(".navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Header title animation
+      const headerTitle = document.querySelector(".header-section h1");
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          headerTitle.classList.add("h1--visible");
+        }, 300);
+      });
+
+      // Intersection Observer for fade-in animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      const today = new Date();
+      const quoteIndex = today.getDate() % quoteImages.length;
+      const currentQuoteImage = quoteImages[quoteIndex];
+      document.getElementById("quote-image").src = currentQuoteImage;
+      document.getElementById("quote-image").alt =
+        "Kutipan inspiratif hari ini";
+
+      document.getElementById(
+        "quote-date"
+      ).textContent = `Hari ini: ${today.toLocaleDateString("id-ID", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}`;
+
+      // Image Modal Functionality
+      function openImageModal(imgElement) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const captionText = document.getElementById("modalCaption");
+
+        modal.style.display = "block";
+        modalImg.src = imgElement.src;
+        captionText.innerHTML = imgElement.alt;
+
+        // Prevent scrolling when modal is open
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeImageModal() {
+        const modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+
+        // Re-enable scrolling
+        document.body.style.overflow = "auto";
+      }
+
+      // Close modal when clicking outside the image
+      window.onclick = function (event) {
+        const modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+          closeImageModal();
+        }
+      };
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        const modal = document.getElementById("imageModal");
+        if (event.key === "Escape" && modal.style.display === "block") {
+          closeImageModal();
+        }
+      });
+
+      function showReflection() {
+        const index = Math.floor(Math.random() * reflections.length);
+        const reflectionCard = document.getElementById("reflection-card");
+        const reflectionText = document.getElementById("reflection-text");
+        const button = document.querySelector(".btn-reflect");
+
+        // Update button text
+        button.innerHTML =
+          '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Memuat...';
+        button.disabled = true;
+
+        // Simulate loading delay
+        setTimeout(() => {
+          reflectionText.textContent = reflections[index];
+          reflectionCard.classList.add("show");
+          button.innerHTML =
+            'Ambil Kartu Baru <i class="fas fa-sync-alt ms-2"></i>';
+          button.disabled = false;
+
+          // Smooth scroll to card
+          reflectionCard.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }, 800);
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Initialize tooltips
+      const tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      // Add floating animation to elements
+      function addFloatingAnimation() {
+        const elements = document.querySelectorAll(".floating-element");
+        elements.forEach((el, index) => {
+          const duration = Math.random() * 20 + 10;
+          const delay = Math.random() * 5;
+          el.style.animation = `float ${duration}s infinite ease-in-out ${delay}s`;
+        });
+      }
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        addFloatingAnimation();
+
+        // Add animation to elements when they come into view
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(
+                  "animate__animated",
+                  "animate__fadeInUp"
+                );
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document
+          .querySelectorAll(".feature-card, .news-card")
+          .forEach((card) => {
+            observer.observe(card);
+          });
+      });
+    </script>
+  </body>
+</html>
